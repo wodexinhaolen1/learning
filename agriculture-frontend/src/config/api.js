@@ -1,0 +1,1 @@
+export const AMAP_KEY = 'c0035db8c78d803bf489c41256826a7d' // 替换为你的高德地图API密钥 
