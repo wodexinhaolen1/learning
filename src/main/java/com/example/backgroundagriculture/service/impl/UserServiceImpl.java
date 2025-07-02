@@ -57,8 +57,14 @@ public class UserServiceImpl implements UserService {
             throw new BusinessException("用户名已存在");
         }
 
+        // 检查邮箱是否已存在
+        if (userRepository.findByEmail(request.getEmail()).isPresent()) {
+            throw new BusinessException("邮箱已被注册");
+        }
+
         User user = new User();
         user.setUsername(request.getUsername());
+        user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         userRepository.save(user);
     }
